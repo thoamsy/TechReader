@@ -11,6 +11,11 @@
 		5930424F24FD43D800C7ACEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930424E24FD43D800C7ACEB /* ContentView.swift */; };
 		5930425124FD43D900C7ACEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5930425024FD43D900C7ACEB /* Assets.xcassets */; };
 		5930425424FD43D900C7ACEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5930425324FD43D900C7ACEB /* Preview Assets.xcassets */; };
+		5930425C24FD440900C7ACEB /* ReaderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930425B24FD440900C7ACEB /* ReaderList.swift */; };
+		5930425E24FD441700C7ACEB /* ReaderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930425D24FD441700C7ACEB /* ReaderDetail.swift */; };
+		5930426124FD443C00C7ACEB /* TechArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930426024FD443C00C7ACEB /* TechArticle.swift */; };
+		5930426324FD44A500C7ACEB /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930426224FD44A500C7ACEB /* Remote.swift */; };
+		5930426524FD49C600C7ACEB /* ArticleForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930426424FD49C600C7ACEB /* ArticleForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		5930425024FD43D900C7ACEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5930425324FD43D900C7ACEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5930425524FD43D900C7ACEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5930425B24FD440900C7ACEB /* ReaderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderList.swift; sourceTree = "<group>"; };
+		5930425D24FD441700C7ACEB /* ReaderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderDetail.swift; sourceTree = "<group>"; };
+		5930426024FD443C00C7ACEB /* TechArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechArticle.swift; sourceTree = "<group>"; };
+		5930426224FD44A500C7ACEB /* Remote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
+		5930426424FD49C600C7ACEB /* ArticleForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +43,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5920DA3424FD51F100D38772 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		5930424024FD43D800C7ACEB = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +69,11 @@
 		5930424B24FD43D800C7ACEB /* TechReader */ = {
 			isa = PBXGroup;
 			children = (
+				5920DA3424FD51F100D38772 /* Views */,
+				5930425F24FD442200C7ACEB /* Model */,
+				5930425B24FD440900C7ACEB /* ReaderList.swift */,
+				5930425D24FD441700C7ACEB /* ReaderDetail.swift */,
+				5930426424FD49C600C7ACEB /* ArticleForm.swift */,
 				5930424C24FD43D800C7ACEB /* TechReaderApp.swift */,
 				5930424E24FD43D800C7ACEB /* ContentView.swift */,
 				5930425024FD43D900C7ACEB /* Assets.xcassets */,
@@ -67,6 +89,15 @@
 				5930425324FD43D900C7ACEB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5930425F24FD442200C7ACEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5930426024FD443C00C7ACEB /* TechArticle.swift */,
+				5930426224FD44A500C7ACEB /* Remote.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +170,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5930424F24FD43D800C7ACEB /* ContentView.swift in Sources */,
+				5930426524FD49C600C7ACEB /* ArticleForm.swift in Sources */,
 				5930424D24FD43D800C7ACEB /* TechReaderApp.swift in Sources */,
+				5930425C24FD440900C7ACEB /* ReaderList.swift in Sources */,
+				5930425E24FD441700C7ACEB /* ReaderDetail.swift in Sources */,
+				5930426124FD443C00C7ACEB /* TechArticle.swift in Sources */,
+				5930426324FD44A500C7ACEB /* Remote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +313,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = thoamsy.TechReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thoamsy.TechReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -299,7 +335,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = thoamsy.TechReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thoamsy.TechReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
