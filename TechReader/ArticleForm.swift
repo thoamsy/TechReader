@@ -11,30 +11,36 @@ import LinkPresentation
 
 struct ArticleForm: View {
   @Binding var articleURL: String
+  @Environment(\.presentationMode) var presentationMode
   @State private var metadata: LPLinkMetadata?
-  let onSubmit: () -> Void
+
+  let onSubmit: (_ metadata: LPLinkMetadata?) -> Void
 
   var body: some View {
     VStack {
       Form {
         Label("URL", systemImage: "newspaper")
         TextField("", text: $articleURL, onEditingChanged: {_ in }) {
-          print(articleURL)
           LinksModel.fetchMetadata(for: articleURL) {
             self.handleLinkFetchResult($0)
           }
-          onSubmit()
         }
         .keyboardType(.URL)
         .disableAutocorrection(true)
       }
       if metadata != nil {
-        LinkView(metadata: metadata)
-          .aspectRatio(contentMode: .fit)
-          .layoutPriority(2)
+        VStack {
+          LinkView(metadata: metadata)
+            .aspectRatio(contentMode: .fit)
+          Button("Save") {
+            onSubmit(self.metadata)
+            presentationMode.wrappedValue.dismiss()
+          }
+        }
       } else {
-        Text("OH?")
-          .layoutPriority(2)
+        Button("Dismiss") {
+          presentationMode.wrappedValue.dismiss()
+        }
       }
     }
   }
@@ -51,6 +57,6 @@ struct ArticleForm: View {
 
 struct ArticleForm_Previews: PreviewProvider {
   static var previews: some View {
-    ArticleForm(articleURL: .constant(""), onSubmit: { })
+    ArticleForm(articleURL: .constant(""), onSubmit: { print($0) })
   }
 }

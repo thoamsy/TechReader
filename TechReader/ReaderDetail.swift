@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import LinkPresentation
 
 struct ReaderDetail: View {
 
   @State private var showPopover = false
   @State private var articleURL = ""
+  @EnvironmentObject var linksList: LinksModel
 
   @State private var articleURLs: [String] = ["initial"]
 
@@ -19,27 +21,34 @@ struct ReaderDetail: View {
       Image(systemName: "plus.circle")
     }.sheet(isPresented: $showPopover) {
       ArticleForm(articleURL: $articleURL) {
-//        showPopover = false
         articleURLs.append(articleURL)
         articleURL = ""
+        keepLink($0)
       }
     }
   }
 
-    var body: some View {
-      NavigationView {
-        List(articleURLs, id: \.self) {
-          Text($0)
-        }
-        .navigationTitle("FOO")
-        .navigationBarItems(trailing: addButton)
+  private func keepLink(_ metadata: LPLinkMetadata?) {
+    metadata.map { self.linksList.createLink(with: $0) }
+  }
+
+  var body: some View {
+    NavigationView {
+      List(linksList.links) { link in
+        Button(action: {}) {
+          LinkView(metadata: link.metadata)
+            .aspectRatio(contentMode: .fit)
+        }.padding(.vertical, 20)
       }
-      .navigationBarTitle("JJ")
+      .navigationTitle("FOO")
+      .navigationBarItems(trailing: addButton)
     }
+    .navigationBarTitle("JJ")
+  }
 }
 
 struct ReaderDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        ReaderDetail()
-    }
+  static var previews: some View {
+    ReaderDetail()
+  }
 }

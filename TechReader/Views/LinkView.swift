@@ -5,9 +5,8 @@
 //  Created by yk on 2020/8/31.
 //
 
-import SwiftUI
-import UIKit
 import LinkPresentation
+import SwiftUI
 
 struct LinkView: UIViewRepresentable {
   typealias UIViewType = LPLinkView
