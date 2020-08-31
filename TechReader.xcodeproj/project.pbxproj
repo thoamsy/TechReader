@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5920DA3624FD528900D38772 /* LinksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920DA3524FD528900D38772 /* LinksModel.swift */; };
+		5920DA3824FD54BE00D38772 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920DA3724FD54BE00D38772 /* LinkView.swift */; };
 		5930424D24FD43D800C7ACEB /* TechReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930424C24FD43D800C7ACEB /* TechReaderApp.swift */; };
 		5930424F24FD43D800C7ACEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930424E24FD43D800C7ACEB /* ContentView.swift */; };
 		5930425124FD43D900C7ACEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5930425024FD43D900C7ACEB /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5920DA3524FD528900D38772 /* LinksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksModel.swift; sourceTree = "<group>"; };
+		5920DA3724FD54BE00D38772 /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
 		5930424924FD43D800C7ACEB /* TechReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5930424C24FD43D800C7ACEB /* TechReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechReaderApp.swift; sourceTree = "<group>"; };
 		5930424E24FD43D800C7ACEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +50,7 @@
 		5920DA3424FD51F100D38772 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5920DA3724FD54BE00D38772 /* LinkView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 			children = (
 				5930426024FD443C00C7ACEB /* TechArticle.swift */,
 				5930426224FD44A500C7ACEB /* Remote.swift */,
+				5920DA3524FD528900D38772 /* LinksModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,7 +180,9 @@
 				5930424D24FD43D800C7ACEB /* TechReaderApp.swift in Sources */,
 				5930425C24FD440900C7ACEB /* ReaderList.swift in Sources */,
 				5930425E24FD441700C7ACEB /* ReaderDetail.swift in Sources */,
+				5920DA3624FD528900D38772 /* LinksModel.swift in Sources */,
 				5930426124FD443C00C7ACEB /* TechArticle.swift in Sources */,
+				5920DA3824FD54BE00D38772 /* LinkView.swift in Sources */,
 				5930426324FD44A500C7ACEB /* Remote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

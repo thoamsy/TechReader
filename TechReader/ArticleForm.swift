@@ -7,27 +7,43 @@
 
 import SwiftUI
 import Combine
+import LinkPresentation
 
 struct ArticleForm: View {
   @Binding var articleURL: String
-  @State private var testSuccess = false
+  @State private var metadata: LPLinkMetadata?
   let onSubmit: () -> Void
 
   var body: some View {
-    Form {
-      Label("URL", systemImage: "newspaper")
-      TextField("", text: $articleURL, onEditingChanged: {_ in }) {
-        onSubmit()
-        testSuccess = true
-      }
-      .keyboardType(.URL)
-      .onReceive(Just(articleURL), perform: { newValue in
-        if URL(string: newValue) != nil {
-          articleURL = newValue
+    VStack {
+      Form {
+        Label("URL", systemImage: "newspaper")
+        TextField("", text: $articleURL, onEditingChanged: {_ in }) {
+          print(articleURL)
+          LinksModel.fetchMetadata(for: articleURL) {
+            self.handleLinkFetchResult($0)
+          }
+          onSubmit()
         }
-      })
-      if testSuccess {
-        Text("YES").foregroundColor(.red)
+        .keyboardType(.URL)
+        .disableAutocorrection(true)
+      }
+      if metadata != nil {
+        LinkView(metadata: metadata)
+          .aspectRatio(contentMode: .fit)
+          .layoutPriority(2)
+      } else {
+        Text("OH?")
+          .layoutPriority(2)
+      }
+    }
+  }
+
+  private func handleLinkFetchResult(_ result: Result<LPLinkMetadata, Error>) {
+    DispatchQueue.main.async {
+      switch result {
+        case .success(let metadata): self.metadata = metadata
+        case .failure(let error): print(error.localizedDescription)
       }
     }
   }

@@ -19,7 +19,7 @@ struct ReaderDetail: View {
       Image(systemName: "plus.circle")
     }.sheet(isPresented: $showPopover) {
       ArticleForm(articleURL: $articleURL) {
-        showPopover = false
+//        showPopover = false
         articleURLs.append(articleURL)
         articleURL = ""
       }
