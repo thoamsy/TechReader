@@ -36,11 +36,17 @@ struct ReaderDetail: View {
     NavigationView {
       List(linksList.links) { link in
         Button(action: {}) {
-          LinkView(metadata: link.metadata)
-            .aspectRatio(contentMode: .fit)
+          VStack(alignment: .leading) {
+            Text("Header")
+              .font(.subheadline)
+              .foregroundColor(Color(UIColor.secondaryLabel))
+            LinkView(metadata: link.metadata)
+              .aspectRatio(contentMode: .fit)
+          }
         }.padding(.vertical, 20)
       }
-      .navigationTitle("FOO")
+      .listStyle(GroupedListStyle())
+      .navigationTitle("Articles")
       .navigationBarItems(trailing: addButton)
     }
     .navigationBarTitle("JJ")
