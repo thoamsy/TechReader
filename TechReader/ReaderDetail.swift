@@ -34,8 +34,8 @@ struct ReaderDetail: View {
 
   var body: some View {
     NavigationView {
-      List(linksList.links) { link in
-        Button(action: {}) {
+      List {
+        ForEach(linksList.links) { link in
           VStack(alignment: .leading) {
             Text("Header")
               .font(.subheadline)
@@ -43,13 +43,23 @@ struct ReaderDetail: View {
             LinkView(metadata: link.metadata)
               .aspectRatio(contentMode: .fit)
           }
-        }.padding(.vertical, 20)
+          .contextMenu {
+            Button(action: {}) {
+              Label("Delete", systemImage: "trash")
+            }
+          }
+        }
+        .onMove{ indices, newOffset in
+          linksList.links.move(fromOffsets: indices, toOffset: newOffset)
+        }
+        .onDelete { indexSet in
+          linksList.links.remove(atOffsets: indexSet)
+        }
       }
       .listStyle(GroupedListStyle())
       .navigationTitle("Articles")
-      .navigationBarItems(trailing: addButton)
+      .navigationBarItems(leading: EditButton(), trailing: addButton)
     }
-    .navigationBarTitle("JJ")
   }
 }
 
