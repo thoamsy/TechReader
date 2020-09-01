@@ -32,23 +32,22 @@ struct ArticleForm: View {
         VStack {
           LinkView(metadata: metadata)
             .aspectRatio(contentMode: .fit)
-          Button("Save") {
-            onSubmit(self.metadata)
-            presentationMode.wrappedValue.dismiss()
-          }
-        }
-      } else {
-        Button("Dismiss") {
-          presentationMode.wrappedValue.dismiss()
         }
       }
-    }
+    }.navigationBarItems(trailing: Button(action: {
+      onSubmit(self.metadata)
+      presentationMode.wrappedValue.dismiss()
+    }) {
+      Text("Save")
+    }.disabled(metadata == nil))
   }
 
   private func handleLinkFetchResult(_ result: Result<LPLinkMetadata, Error>) {
     DispatchQueue.main.async {
       switch result {
-        case .success(let metadata): self.metadata = metadata
+        case .success(let metadata):
+          self.metadata = metadata
+          print(metadata.title, metadata.description, metadata.imageProvider)
         case .failure(let error): print(error.localizedDescription)
       }
     }

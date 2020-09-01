@@ -18,6 +18,7 @@
 		5930426124FD443C00C7ACEB /* TechArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930426024FD443C00C7ACEB /* TechArticle.swift */; };
 		5930426324FD44A500C7ACEB /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930426224FD44A500C7ACEB /* Remote.swift */; };
 		5930426524FD49C600C7ACEB /* ArticleForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930426424FD49C600C7ACEB /* ArticleForm.swift */; };
+		59E433B624FE9B4400D8D5FD /* ShareLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E433B524FE9B4400D8D5FD /* ShareLinkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		5930426024FD443C00C7ACEB /* TechArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechArticle.swift; sourceTree = "<group>"; };
 		5930426224FD44A500C7ACEB /* Remote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		5930426424FD49C600C7ACEB /* ArticleForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleForm.swift; sourceTree = "<group>"; };
+		59E433B524FE9B4400D8D5FD /* ShareLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				5920DA3724FD54BE00D38772 /* LinkView.swift */,
+				59E433B524FE9B4400D8D5FD /* ShareLinkView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				5920DA3624FD528900D38772 /* LinksModel.swift in Sources */,
 				5930426124FD443C00C7ACEB /* TechArticle.swift in Sources */,
 				5920DA3824FD54BE00D38772 /* LinkView.swift in Sources */,
+				59E433B624FE9B4400D8D5FD /* ShareLinkView.swift in Sources */,
 				5930426324FD44A500C7ACEB /* Remote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,7 +325,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thoamsy.TechReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thoamsy.techreader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -343,7 +347,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thoamsy.TechReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thoamsy.techreader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
