@@ -45,9 +45,7 @@ struct ArticleForm: View {
   private func handleLinkFetchResult(_ result: Result<LPLinkMetadata, Error>) {
     DispatchQueue.main.async {
       switch result {
-        case .success(let metadata):
-          self.metadata = metadata
-          print(metadata.title, metadata.description, metadata.imageProvider)
+        case .success(let metadata): self.metadata = metadata
         case .failure(let error): print(error.localizedDescription)
       }
     }

@@ -13,6 +13,7 @@ struct ReaderDetail: View {
   @State private var showPopover = false
   @State private var articleURL = ""
   @EnvironmentObject var linksList: LinksModel
+  @Environment(\.editMode) var editMode
 
   @State private var linkToShare: Link?
   @State private var articleURLs: [String] = ["initial"]
@@ -39,18 +40,50 @@ struct ReaderDetail: View {
     linksList.links.remove(atOffsets: indexSet)
   }
 
+  private func onDragItems(indexSet: IndexSet, items: [NSItemProvider]) {
+    for provider in items {
+      guard provider.canLoadObject(ofClass: URL.self) else { return }
+      provider.loadObject(ofClass: URL.self) { url, error in
+        url.map {
+          LinksModel.fetchMetadata(for: $0.absoluteString) { result in
+            DispatchQueue.main.async {
+              switch result {
+                case .success(let metadata):
+                  keepLink(metadata)
+                default:
+                  break;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  var isEditing: Bool {
+    editMode?.wrappedValue.isEditing ?? false
+  }
+
   var body: some View {
     NavigationView {
       VStack {
         List {
           ForEach(Array(linksList.links.enumerated()), id: \.1) { (index, link) in
             VStack(alignment: .leading) {
-              Text("Header")
+              Text(link.metadata?.title ?? "Untitle")
                 .font(.subheadline)
                 .foregroundColor(Color(UIColor.secondaryLabel))
-              LinkView(metadata: link.metadata)
-                .aspectRatio(contentMode: .fit)
-                .disabled(true)
+                .lineLimit(1)
+                .frame(width: 300)
+                .truncationMode(.tail)
+
+
+              if !isEditing {
+                LinkView(metadata: link.metadata)
+                  .aspectRatio(contentMode: .fit)
+                  .disabled(true)
+              }
+
             }
             .contextMenu {
               Button(action: {
@@ -61,10 +94,17 @@ struct ReaderDetail: View {
                   .border(Color.red)
               }
 
-              Button(action: {
-                linkToShare = link
-              }) {
-                Label("Share", systemImage: "square.and.arrow.up")
+              Section {
+                Button(action: {
+                }) {
+                  Label("Edit", systemImage: "square.and.pencil")
+                }
+
+                Button(action: {
+                  linkToShare = link
+                }) {
+                  Label("Share", systemImage: "square.and.arrow.up")
+                }
               }
             }
           }
@@ -72,8 +112,8 @@ struct ReaderDetail: View {
             linksList.links.move(fromOffsets: indices, toOffset: newOffset)
           }
           .onDelete(perform: onDelete(indexSet:))
+          //          .onInsert(of: [.url], perform: onDragItems(indexSet:items:))
         }
-        .listStyle(GroupedListStyle())
 
         if linkToShare != nil {
           ShareLinkView(metadata: linkToShare!.metadata) {
@@ -82,8 +122,29 @@ struct ReaderDetail: View {
         }
       }
       .navigationTitle("Articles")
-      .navigationBarItems(trailing: addButton)
-
+      .navigationBarItems(leading: EditButton(), trailing: addButton)
+      .onDrop(of: [.url], isTargeted: nil, perform: { providers in
+        print("JLKJLK")
+        for provider in providers {
+          guard provider.canLoadObject(ofClass: URL.self) else { return false }
+          _ = provider.loadObject(ofClass: URL.self) { url, error in
+            url.map {
+              LinksModel.fetchMetadata(for: $0.absoluteString) { result in
+                DispatchQueue.main.async {
+                  switch result {
+                    case .success(let metadata):
+                      keepLink(metadata)
+                    default:
+                      break;
+                  }
+                }
+              }
+            }
+          }
+          return true
+        }
+        return false
+      })
     }
   }
 }

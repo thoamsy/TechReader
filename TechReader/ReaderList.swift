@@ -6,10 +6,22 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ReaderList: View {
+  private func fetchHTML(url: URL) {
+    URLSession.shared.dataTaskPublisher(for: url)
+      .map { $0.data }
+      .sink(receiveCompletion: {_ in }, receiveValue: { data in
+        print(data)
+      })
+
+  }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+      Button("FOO") {
+        fetchHTML(url: URL(string: "https://9to5mac.com/2020/08/29/apple-watch-national-parks-challenge/")!)
+      }
     }
 }
 
