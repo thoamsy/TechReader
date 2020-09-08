@@ -18,7 +18,9 @@
 		5930426124FD443C00C7ACEB /* TechArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930426024FD443C00C7ACEB /* TechArticle.swift */; };
 		5930426324FD44A500C7ACEB /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930426224FD44A500C7ACEB /* Remote.swift */; };
 		5930426524FD49C600C7ACEB /* ArticleForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5930426424FD49C600C7ACEB /* ArticleForm.swift */; };
+		5997EA232507D02600978FDC /* ArticleLinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5997EA222507D02600978FDC /* ArticleLinkList.swift */; };
 		59E433B624FE9B4400D8D5FD /* ShareLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E433B524FE9B4400D8D5FD /* ShareLinkView.swift */; };
+		59F0BFD12507E56100AAD1F1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F0BFD02507E56100AAD1F1 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +37,9 @@
 		5930426024FD443C00C7ACEB /* TechArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechArticle.swift; sourceTree = "<group>"; };
 		5930426224FD44A500C7ACEB /* Remote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		5930426424FD49C600C7ACEB /* ArticleForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleForm.swift; sourceTree = "<group>"; };
+		5997EA222507D02600978FDC /* ArticleLinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleLinkList.swift; sourceTree = "<group>"; };
 		59E433B524FE9B4400D8D5FD /* ShareLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkView.swift; sourceTree = "<group>"; };
+		59F0BFD02507E56100AAD1F1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				5920DA3724FD54BE00D38772 /* LinkView.swift */,
 				59E433B524FE9B4400D8D5FD /* ShareLinkView.swift */,
+				5997EA222507D02600978FDC /* ArticleLinkList.swift */,
+				59F0BFD02507E56100AAD1F1 /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +192,8 @@
 				5920DA3624FD528900D38772 /* LinksModel.swift in Sources */,
 				5930426124FD443C00C7ACEB /* TechArticle.swift in Sources */,
 				5920DA3824FD54BE00D38772 /* LinkView.swift in Sources */,
+				59F0BFD12507E56100AAD1F1 /* CustomTextField.swift in Sources */,
+				5997EA232507D02600978FDC /* ArticleLinkList.swift in Sources */,
 				59E433B624FE9B4400D8D5FD /* ShareLinkView.swift in Sources */,
 				5930426324FD44A500C7ACEB /* Remote.swift in Sources */,
 			);

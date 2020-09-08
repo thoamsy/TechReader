@@ -3,4 +3,54 @@
    uuid = "5D530393-C1AF-4009-8191-5F2A2B7A3359"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7130B83-043E-4A7F-B0BE-8737E02873D7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TechReader/Model/LinksModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "fetchMetadata(for:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C7130B83-043E-4A7F-B0BE-8737E02873D7 - 3f2f2bbe0d4f11bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TechReader.LinksModel.fetchMetadata(for: Swift.String, completion: (Swift.Result&lt;__C.LPLinkMetadata, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TechReader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yk/Documents/Playgrounds/TechReader/TechReader/Model/LinksModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "680">
+               </Location>
+               <Location
+                  uuid = "C7130B83-043E-4A7F-B0BE-8737E02873D7 - a48cde7009317716"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 ((data: Foundation.Data, response: __C.NSURLResponse)) -&gt; Swift.String in static TechReader.LinksModel.fetchMetadata(for: Swift.String, completion: (Swift.Result&lt;__C.LPLinkMetadata, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TechReader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yk/Documents/Playgrounds/TechReader/TechReader/Model/LinksModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "117">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -15,6 +15,22 @@ final class LinksModel: ObservableObject {
   class func fetchMetadata(for link: String, completion: @escaping (Result<LPLinkMetadata, Error>) -> Void) {
     guard let url = URL(string: link) else { return }
 
+    URLSession.shared.dataTaskPublisher(for: url)
+      .retry(2)
+      .tryMap() { element in
+        guard let httpResponse = element.response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+          throw URLError(.badServerResponse)
+        }
+        return String(decoding: element.data, as: UTF8.self)
+//        return String(data: element.data, encoding: .utf8)
+      }
+      .sink(receiveCompletion: {
+        print(("JLKJKL: \($0)"))
+      }, receiveValue: { value in
+        print(value)
+      })
+
     let metadataProvider = LPMetadataProvider()
 
     metadataProvider.startFetchingMetadata(for: url) { (metadata, error) in
