@@ -20,12 +20,10 @@ struct ReaderDetail: View {
     Button(action: { showPopover.toggle() }) {
       Image(systemName: "plus.circle")
     }.sheet(isPresented: $showPopover) {
-      NavigationView {
-        ArticleForm(articleURL: $articleURL) {
-          articleURLs.append(articleURL)
-          articleURL = ""
-          keepLink($0)
-        }
+      ArticleForm(articleURL: $articleURL) {
+        articleURLs.append(articleURL)
+        articleURL = ""
+        keepLink($0)
       }
     }
   }
@@ -38,9 +36,9 @@ struct ReaderDetail: View {
   private func onDragItems(indexSet: IndexSet, items: [NSItemProvider]) {
     for provider in items {
       guard provider.canLoadObject(ofClass: URL.self) else { return }
-      let _ = provider.loadObject(ofClass: URL.self) { url, error in
-        url.map {
-          LinksModel.fetchMetadata(for: $0.absoluteString) { result in
+      let _ = provider.loadObject(ofClass: URL.self) { _url, error in
+        _url.map { url in
+          LinksModel.fetchMetadata(for: url.absoluteString) { result in
             DispatchQueue.main.async {
               switch result {
                 case .success(let metadata):
@@ -62,27 +60,6 @@ struct ReaderDetail: View {
         .environmentObject(LinksModel())
         .navigationTitle("Articles")
         .navigationBarItems(leading: EditButton(), trailing: addButton)
-        .onDrop(of: [.url], isTargeted: nil, perform: { providers in
-          for provider in providers {
-            guard provider.canLoadObject(ofClass: URL.self) else { return false }
-            _ = provider.loadObject(ofClass: URL.self) { url, error in
-              url.map {
-                LinksModel.fetchMetadata(for: $0.absoluteString) { result in
-                  DispatchQueue.main.async {
-                    switch result {
-                      case .success(let metadata):
-                        keepLink(metadata)
-                      default:
-                        break;
-                    }
-                  }
-                }
-              }
-            }
-            return true
-          }
-          return false
-        })
     }
   }
 }

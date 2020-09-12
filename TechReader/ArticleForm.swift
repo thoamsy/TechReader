@@ -19,10 +19,22 @@ struct ArticleForm: View {
 
   var body: some View {
 
-    VStack {
+    VStack(spacing: 0) {
+      ZStack {
+        Text("Add Article").font(.headline)
+        HStack {
+          Spacer()
+          Button("Done") {
+            onSubmit(self.metadata)
+            self.presentationMode.wrappedValue.dismiss()
+          }.padding()
+          .disabled(metadata == nil)
+        }
+      }
+      Divider()
       Form {
-        Section(header: Text("URL")) {
-          TextField("", text: $articleURL, onEditingChanged: {_ in }) {
+        Section {
+          TextField("URL", text: $articleURL, onEditingChanged: {_ in }) {
             inProcess = true
             LinksModel.fetchMetadata(for: articleURL) {
               self.handleLinkFetchResult($0)
@@ -31,31 +43,24 @@ struct ArticleForm: View {
           .keyboardType(.URL)
           .disableAutocorrection(true)
         }
-      }.frame(height: 120)
-      if metadata != nil {
-        VStack {
-          LinkView(metadata: metadata)
-            .aspectRatio(contentMode: .fit)
-            .padding()
+
+        Section(header: Text("Preview")) {
+          if metadata != nil {
+            VStack {
+              LinkView(metadata: metadata)
+                .aspectRatio(contentMode: .fit)
+                .padding()
+            }
+          }
+          if inProcess {
+            ProgressView()
+              .progressViewStyle(CircularProgressViewStyle())
+              .foregroundColor(.green)
+              .frame(width: 200, height: 200)
+          }
         }
       }
-
-      if inProcess {
-        ProgressView()
-          .progressViewStyle(CircularProgressViewStyle())
-          .foregroundColor(.green)
-          .frame(width: 200, height: 200)
-      }
-
-      Spacer()
     }
-    .navigationBarItems(trailing: Button(action: {
-      onSubmit(self.metadata)
-      presentationMode.wrappedValue.dismiss()
-    }) {
-      Text("Save")
-    }.disabled(metadata == nil))
-
   }
 
 

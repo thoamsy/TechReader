@@ -11,7 +11,7 @@ struct ArticleLinkList: View {
   @EnvironmentObject var linksList: LinksModel
   @Environment(\.editMode) var editMode
 
-  @State private var linkToShare: Link?
+  @State private var linkToShare: ArticleLink?
 
   private func onDelete(indexSet: IndexSet) {
     linksList.links.remove(atOffsets: indexSet)
@@ -27,17 +27,23 @@ struct ArticleLinkList: View {
       List {
         ForEach(Array(linksList.links.enumerated()), id: \.1) { (index, link) in
           VStack(alignment: .leading) {
-            Text(link.metadata?.title ?? "Untitle")
-              .font(.subheadline)
-              .foregroundColor(Color(UIColor.secondaryLabel))
-              .lineLimit(1)
-              .frame(width: 300)
-              .truncationMode(.tail)
+//            Text(link.metadata?.title ?? "Untitle")
+//              .font(.subheadline)
+//              .foregroundColor(Color(UIColor.secondaryLabel))
+//              .lineLimit(1)
+//              .frame(width: 300)
+//              .truncationMode(.tail)
 
 
-              LinkView(metadata: link.metadata)
-                .aspectRatio(contentMode: .fit)
-                .disabled(true)
+            LinkView(metadata: link.metadata)
+              .aspectRatio(contentMode: .fit)
+              .disabled(true)
+
+//            if link.metadata.url != nil {
+//              Link(destination: link.metadata.url!) {
+//                Label("Preview", systemImage: "link")
+//              }
+//            }
 
           }
           .contextMenu {
@@ -70,6 +76,7 @@ struct ArticleLinkList: View {
         //          .onInsert(of: [.url], perform: onDragItems(indexSet:items:))
       }
       .listStyle(InsetListStyle())
+
       if linkToShare != nil {
         ShareLinkView(metadata: linkToShare!.metadata) {
           self.linkToShare = nil

@@ -10,7 +10,7 @@ import LinkPresentation
 
 
 final class LinksModel: ObservableObject {
-  @Published var links: [Link] = []
+  @Published var links: [ArticleLink] = []
 
   class func fetchMetadata(for link: String, completion: @escaping (Result<LPLinkMetadata, Error>) -> Void) {
     guard let url = URL(string: link) else { return }
@@ -50,7 +50,7 @@ final class LinksModel: ObservableObject {
   }
 
   func createLink(with metadata: LPLinkMetadata) {
-    let link = Link()
+    let link = ArticleLink()
     link.id = Int(Date.timeIntervalSinceReferenceDate)
     link.metadata = metadata
     links.append(link)
@@ -64,7 +64,7 @@ final class LinksModel: ObservableObject {
     if FileManager.default.fileExists(atPath: linksURL.path) {
       do {
         let data = try Data(contentsOf: linksURL)
-        guard let unarchived = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Link] else { return }
+        guard let unarchived = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [ArticleLink] else { return }
         links = unarchived
       } catch {
         print(error.localizedDescription)
@@ -86,7 +86,7 @@ final class LinksModel: ObservableObject {
   }
 }
 
-final class Link: NSObject, NSSecureCoding, Identifiable {
+final class ArticleLink: NSObject, NSSecureCoding, Identifiable {
   static var supportsSecureCoding = true
 
   enum encoderKeys: String {
